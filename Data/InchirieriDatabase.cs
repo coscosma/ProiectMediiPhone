@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 using ProiectMediiPhone.Models;
-using ProiectMediiPhone.Auth;
+using ProiectMediiPhone.Autentificare;
 
 
 namespace ProiectMediiPhone.Data
@@ -20,14 +20,14 @@ namespace ProiectMediiPhone.Data
             _database.CreateTableAsync<Inchiriere>().Wait();
             _database.CreateTableAsync<Masina>().Wait();
             _database.CreateTableAsync<Client>().Wait();
-            _database.CreateTableAsync<Admin>().Wait();
+            _database.CreateTableAsync<Agent>().Wait();
 
         }
 
-        //IUser - pentru auth 
-        public Task<Masina> AuthenticateMasinaAsync(string email, string password)
+        //Client - pentru auth 
+        public Task<Agent> AuthenticateAgentAsync(string email, string password)
         {
-            return _database.Table<Barber>()
+            return _database.Table<Agent>()
                 .Where(u => u.Email == email && u.Parola == password)
                 .FirstOrDefaultAsync();
         }
@@ -40,17 +40,17 @@ namespace ProiectMediiPhone.Data
         }
 
         // Programare
-        public Task<List<Programare>> GetProgramariAsync()
+        public Task<List<Inchiriere>> GetInchirieriAsync()
         {
-            return _database.Table<Programare>().ToListAsync();
+            return _database.Table<Inchiriere>().ToListAsync();
         }
-        public Task<Programare> GetProgramareAsync(int id)
+        public Task<Inchiriere> GetInchiriereAsync(int id)
         {
-            return _database.Table<Programare>()
+            return _database.Table<Inchiriere>()
             .Where(i => i.ID == id)
            .FirstOrDefaultAsync();
         }
-        public Task<int> SaveProgramareAsync(Programare programare)
+        public Task<int> SaveProgramareAsync(Inchiriere programare)
         {
             if (programare.ID != 0)
             {
@@ -61,40 +61,40 @@ namespace ProiectMediiPhone.Data
                 return _database.InsertAsync(programare);
             }
         }
-        public Task<int> DeleteProgramareAsync(Programare programare)
+        public Task<int> DeleteProgramareAsync(Inchiriere programare)
         {
             return _database.DeleteAsync(programare);
         }
 
 
         // Barber
-        public Task<List<Barber>> GetBarbersAsync()
+        public Task<List<Agent>> GetAgentiAsync()
         {
-            return _database.Table<Barber>().ToListAsync();
+            return _database.Table<Agent>().ToListAsync();
         }
 
-        public Task<Barber> GetBarberAsync(int id)
+        public Task<Agent> GetAgentAsync(int id)
         {
-            return _database.Table<Barber>()
+            return _database.Table<Agent>()
                             .Where(i => i.ID == id)
                             .FirstOrDefaultAsync();
         }
 
-        public Task<int> SaveBarberAsync(Barber barber)
+        public Task<int> SaveAgentAsync(Agent agent)
         {
-            if (barber.ID != 0)
+            if (agent.ID != 0)
             {
-                return _database.UpdateAsync(barber);
+                return _database.UpdateAsync(agent);
             }
             else
             {
-                return _database.InsertAsync(barber);
+                return _database.InsertAsync(agent);
             }
         }
 
-        public Task<int> DeleteBarberAsync(Barber barber)
+        public Task<int> DeleteAgentAsync(Agent agent)
         {
-            return _database.DeleteAsync(barber);
+            return _database.DeleteAsync(agent);
         }
 
         // Client
@@ -131,16 +131,16 @@ namespace ProiectMediiPhone.Data
 
         // in functie de ID
 
-        public Task<List<Programare>> GetVisibleProgramariForClientAsync(int clientId)
+        public Task<List<Inchiriere>> GetVisibleInchirieriForClientAsync(int clientId)
         {
-            return _database.Table<Programare>()
+            return _database.Table<Inchiriere>()
                 .Where(p => p.Client.ID == clientId)
                 .ToListAsync();
         }
 
         public async Task<int?> GetUserIdByEmailAndPasswordAsync(string email, string password)
         {
-            var barberUserId = await _database.Table<Barber>()
+            var agentUserId = await _database.Table<Agent>()
                 .Where(u => u.Email == email && u.Parola == password)
                 .FirstOrDefaultAsync();
 
@@ -148,8 +148,8 @@ namespace ProiectMediiPhone.Data
                 .Where(u => u.Email == email && u.Parola == password)
                 .FirstOrDefaultAsync();
 
-            if (barberUserId != null)
-                return barberUserId.ID;
+            if (agentUserId != null)
+                return agentUserId.ID;
             else if (clientUserId != null)
                 return clientUserId.ID;
             else

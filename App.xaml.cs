@@ -5,16 +5,16 @@ namespace ProiectMediiPhone;
 public partial class App : Application
 {
 
-    static MasiniDatabase database;
-    public static MasiniDatabase Database
+    static InchirieriDatabase database;
+    public static InchirieriDatabase Database
     {
         get
         {
             if (database == null)
             {
                 database = new
-               MasiniDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
-               LocalApplicationData), "MasiniDatabase.db3"));
+               InchirieriDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+               LocalApplicationData), "InchirieriDatabase.db3"));
             }
             return database;
         }
