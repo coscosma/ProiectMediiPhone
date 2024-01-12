@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProiectMediiPhone.MasiniEntryPage"
+             Title="MasiniEntryPage">
+
+
+    <StackLayout>
+        <Entry x:Name="marcaEntry" Placeholder="Marca" />
+        <Entry x:Name="modelEntry" Placeholder="Model" />
+        <Entry x:Name="anEntry" Placeholder="An" />
+        <Entry x:Name="tipcombustibilEntry" Placeholder="TipCombustibil" />
+
+
+        <Button Text="Save" Clicked="OnSaveButtonClicked" />
+    </StackLayout>
+
+
+</ContentPage>
