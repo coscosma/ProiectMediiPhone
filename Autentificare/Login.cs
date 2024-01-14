@@ -10,7 +10,7 @@ namespace ProiectMediiPhone.Autentificare
 {
     public class Login
     {
-        public async Task<Agent> AuthenticateBarberAsync(string email, string password)
+        public async Task<Agent> AuthenticateAgentAsync(string email, string password)
         {
             // Autentificare ca si barber
             Agent authenticatedBarber = await App.Database.AuthenticateAgentAsync(email, password);

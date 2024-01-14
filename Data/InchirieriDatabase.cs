@@ -39,7 +39,7 @@ namespace ProiectMediiPhone.Data
                 .FirstOrDefaultAsync();
         }
 
-        // Programare
+        // Inchiriere
         public Task<List<Inchiriere>> GetInchirieriAsync()
         {
             return _database.Table<Inchiriere>().ToListAsync();
@@ -50,25 +50,63 @@ namespace ProiectMediiPhone.Data
             .Where(i => i.ID == id)
            .FirstOrDefaultAsync();
         }
-        public Task<int> SaveProgramareAsync(Inchiriere programare)
+        public Task<int> SaveInchiriereAsync(Inchiriere inchiriere)
         {
-            if (programare.ID != 0)
+            if (inchiriere.ID != 0)
             {
-                return _database.UpdateAsync(programare);
+                return _database.UpdateAsync(inchiriere);
             }
             else
             {
-                return _database.InsertAsync(programare);
+                return _database.InsertAsync(inchiriere);
             }
         }
-        public Task<int> DeleteProgramareAsync(Inchiriere programare)
+        public Task<int> DeleteInchiriereAsync(Inchiriere inchiriere)
         {
-            return _database.DeleteAsync(programare);
+            return _database.DeleteAsync(inchiriere);
         }
 
+        // Masina
+        public Task<List<Masina>> GetMasiniAsync()
+        {
+            return _database.Table<Masina>().ToListAsync();
+        }
 
-        // Barber
-        public Task<List<Agent>> GetAgentiAsync()
+        public Task<Masina> GetMasinaAsync(int id)
+        {
+            return _database.Table<Masina>()
+                            .Where(i => i.ID == id)
+                            .FirstOrDefaultAsync();
+        }
+
+        public Task<int> SaveMasinaAsync(Masina masina)
+        {
+            if (masina.ID != 0)
+            {
+                return _database.UpdateAsync(masina);
+            }
+            else
+            {
+                return _database.InsertAsync(masina);
+            }
+        }
+
+        public Task<int> DeleteMasinaAsync(Masina masina)
+        {
+            return _database.DeleteAsync(masina);
+        }
+
+        // ...
+
+        public Task<List<Inchiriere>> GetInchirieriForMasinaAsync(int masinaId)
+        {
+            return _database.Table<Inchiriere>()
+                .Where(i => i.MasinaID == masinaId)
+                .ToListAsync();
+        }
+
+    // Agent
+    public Task<List<Agent>> GetAgentiAsync()
         {
             return _database.Table<Agent>().ToListAsync();
         }

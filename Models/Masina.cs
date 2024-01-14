@@ -11,23 +11,31 @@ namespace ProiectMediiPhone.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+
+        [MaxLength(50)]
+        public string Marca { get; set; }
+
+        [MaxLength(50)]
         public string Model { get; set; }
 
-        public int? ProducatorID { get; set; }
+        [MaxLength(25)]
+        public string TipCombustibil { get; set; }
 
-        public Producator? Producator { get; set; }
+        [MaxLength(50)]
+        public string Categorie { get; set; }
+
+        [MaxLength(30)]
+        public string Culoare { get; set; }
+
+        public int Putere { get; set; }
+
+        public int NrLocuri { get; set; }
 
         public int An { get; set; }
 
-        public int? CategorieID { get; set; }
-
-        public Categorie? Categorie { get; set; }
-
         public decimal? Pret { get; set; }
 
-        public int? LocatieID { get; set; }
 
-        public Locatie? Locatie { get; set; }
 
     }
 }
