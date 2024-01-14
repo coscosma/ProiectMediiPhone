@@ -7,11 +7,11 @@
        Shell.TabBarIsVisible="True">
 
     <Tab Title="Home">
-        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="MainPage" />
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
     </Tab>
 
-    <Tab Title="Inchiriere">
-        <ShellContent ContentTemplate="{DataTemplate local:MasiniListPage}" />
+    <Tab Title="Alege Masina">
+        <ShellContent ContentTemplate="{DataTemplate local:MasiniListPage}" Route="MainPage" />
     </Tab>
 
     <Tab Title="Delogheaza-te!">
