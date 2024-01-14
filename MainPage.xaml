@@ -28,7 +28,11 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-           
+
+         
+            
+
+
 
         </VerticalStackLayout>
     </ScrollView>

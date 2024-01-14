@@ -6,4 +6,8 @@ public partial class InchiriereEntryPg : ContentPage
 	{
 		InitializeComponent();
 	}
+
+
+
+   
 }

@@ -7,7 +7,7 @@
        Shell.TabBarIsVisible="True">
 
     <Tab Title="Home">
-        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
     </Tab>
 
     <Tab Title="Alege Masina">
@@ -17,5 +17,10 @@
     <Tab Title="Delogheaza-te!">
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
     </Tab>
+
+
+
+
+    
 
 </Shell>
