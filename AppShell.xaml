@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="ProiectMediiPhone.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ProiectMediiPhone"
-    Shell.FlyoutBehavior="Disabled">
+<Shell x:Class="ProiectMediiPhone.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:ProiectMediiPhone"
+       Shell.FlyoutBehavior="Disabled"
+       Shell.TabBarIsVisible="True">
 
-        <TabBar>
-        <ShellContent
-        Title="Home"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            />
-        <ShellContent
-            Title="About"
-            ContentTemplate="{DataTemplate local:AboutUs}"
-            />
-    </TabBar>
+    <Tab Title="Home">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="MainPage" />
+    </Tab>
+
+    <Tab Title="Inchiriere">
+        <ShellContent ContentTemplate="{DataTemplate local:MasiniListPage}" />
+    </Tab>
+
+    <Tab Title="Delogheaza-te!">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </Tab>
 
 </Shell>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProiectMediiPhone.Resources.RegisterPage"
+             Shell.TabBarIsVisible="False"
+             Title="RegisterPage">
+    <StackLayout Margin="20">
+        <Label Text="Completeti datele de autentificare:" FontAttributes="Bold" />
+
+        <Label Text="Email: " FontAttributes="Bold" />
+        <Entry x:Name="emailEntry" Placeholder="Email" />
+
+        <Label Text="Parola: " FontAttributes="Bold" />
+        <Entry x:Name="parolaEntry" Placeholder="Parola" IsPassword="True" />
+
+        <Label Text="Nume: " FontAttributes="Bold" />
+        <Entry x:Name="numeEntry" Placeholder="Nume"  />
+
+        <Label Text="Prenume: " FontAttributes="Bold" />
+        <Entry x:Name="prenumeEntry" Placeholder="Prenume" />
+
+        <Label Text="Telefon: " FontAttributes="Bold" />
+        <Entry x:Name="telefonEntry" Placeholder="Numar de telefon" />
+
+        <Label Text="Adresa: " FontAttributes="Bold" />
+        <Entry x:Name="adresaEntry" Placeholder="Adresa de resedinta" />
+
+        <Button Text="Sign Up" Clicked="OnSignUpButtonClicked" />
+    </StackLayout>
+</ContentPage>
